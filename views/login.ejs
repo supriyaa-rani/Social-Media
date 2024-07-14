@@ -2,4 +2,12 @@
 
 <%- include('partials/nav')%>
 
+<form class=" w-max m-auto p-20" action="login-user" method="post">
+    <input class="p-3 rounded-lg border-2 border-violet-600" type="text" placeholder="username" name="username"><br><br>
+    <input class="p-3 rounded-lg border-2 border-violet-600" class="p-3 rounded-lg" type="password" placeholder="password" name="password" id=""><br>
+    <a class="text-violet-900 hover:text-pink-700 font-medium" href="/forget-password">Forget Password? </a><br><br>
+    <button class="w-max p-2 bg-gradient-to-r from-purple-500 to-pink-700 text-transparent bg-clip-text text-xl font-bold">Login</button><br>
+    <p class="text-violet-900">Don't have an Account? <a class="text-violet-900 hover:text-pink-700 font-medium" href="/register">Register</a></p>
+</form>
+
 <%- include('partials/footer')%>
