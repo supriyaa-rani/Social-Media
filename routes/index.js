@@ -30,4 +30,8 @@ router.post('/register-user',async function(req, res, next) {
   } 
 });
 
+router.get('/profile', function(req, res, next) {
+  res.render('profile');
+});
+
 module.exports = router;
