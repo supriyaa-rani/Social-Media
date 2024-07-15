@@ -4,6 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const passport = require('passport')
+const session = require('express-session')
+const User = require('./models/userSchema')
+
 const db = require('./models/connect')
 
 var indexRouter = require('./routes/index');
@@ -20,6 +24,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(
+  session({
+    saveUninitialized:true,
+    resave:true,
+    secret:'asdffghjk'
+  })
+)
+
+app.use(passport.initialize())
+app.use(passport.session())
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
