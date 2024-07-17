@@ -9,7 +9,7 @@ passport.use(new localStrategy(User.authenticate()))
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  res.render('index', {user : req.user});
 });
 
 router.get('/login', function(req, res, next) {
@@ -23,7 +23,7 @@ router.post('/login-user', passport.authenticate('local', {
 function(req, res, next) {});
 
 router.get('/about', function(req, res, next) {
-  res.render('about', {user : user.req});
+  res.render('about', {user : req.user});
 });
 
 router.get('/register', function(req, res, next) {
@@ -40,8 +40,12 @@ router.post('/register-user',async function(req, res, next) {
   } 
 });
 
-router.get('/profile', function(req, res, next) {
+router.get('/profile', isLoggedIn, function(req, res, next) {
   res.render('profile', {user : req.user});
+});
+
+router.get('/update-user/:id', isLoggedIn, function(req, res, next) {
+  res.render('userupdate', {user : req.user});
 });
 
 router.get('/logout-user', isLoggedIn, function(req, res, next) {
