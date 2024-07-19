@@ -7,11 +7,11 @@
         <div class="flex mt-5">
             <!-- <img class="w-[10vh] h-[10vh] object-cover object-top rounded-full" src="https://images.unsplash.com/photo-1601288496920-b6154fe3626a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIwfHx8ZW58MHx8fHx8" alt=""> -->
 
-            <form class="hidden form-image" action="/image/<%= user._id%>" method="post">
+            <form class="hidden form-image" action="/image/<%= user._id%>" method="post" enctype="multipart/form-data">
                 <input class="input-image" type="file" name="profilepic" id="">
             </form>
 
-            <img class="preview-image rounded-full h-[15vh] w-[15vh]" src="<%= user.profilepic%>" alt="">
+            <img class="preview-image rounded-full h-[15vh] w-[15vh]" src="/images/<%= user.profilepic%>" alt="">
         
             <div class="pl-2 leading-5">
                 <h1 class="font-bold text-pink-500 font-bold text-2xl"><%= user.fullname%></h1>
