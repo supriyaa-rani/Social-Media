@@ -71,10 +71,13 @@
     </div>
 </div>
 
-<div class="bg-gradient-to-r from-purple-500 to to-pink-500 w-max m-auto text-white px-8 py-5 font-bold text-2xl rounded-lg">
+<div class="bg-gradient-to-r flex from-purple-500 to to-pink-500 w-max m-auto text-white px-8 py-5 font-bold text-2xl rounded-lg">
     <i class="ri-search-line"></i>
     <i class="ri-add-large-line px-14"></i>
-    <a href="/update-user/<%= user._id%>" class="ri-user-fill"></a>
+    <!-- <a href="/update-user/<%= user._id%>" class="ri-user-fill"></a> -->
+     <a href="/update-user/<%= user._id%>">
+        <img class="rounded-full h-[5vh] w-[5vh]" src="<%= user.profilepic%>" alt="">
+     </a>
 </div>
 
 <%- include('partials/footer')%>

@@ -5,7 +5,13 @@
 <div class="flex justify-evenly">
     <div>
         <div class="flex mt-5">
-            <img class="w-[10vh] h-[10vh] object-cover object-top rounded-full" src="https://images.unsplash.com/photo-1601288496920-b6154fe3626a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIwfHx8ZW58MHx8fHx8" alt="">
+            <!-- <img class="w-[10vh] h-[10vh] object-cover object-top rounded-full" src="https://images.unsplash.com/photo-1601288496920-b6154fe3626a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIwfHx8ZW58MHx8fHx8" alt=""> -->
+
+            <form class="hidden form-image" action="/image/<%= user._id%>" method="post">
+                <input class="input-image" type="file" name="profilepic" id="">
+            </form>
+
+            <img class="preview-image rounded-full h-[15vh] w-[15vh]" src="<%= user.profilepic%>" alt="">
         
             <div class="pl-2 leading-5">
                 <h1 class="font-bold text-pink-500 font-bold text-2xl"><%= user.fullname%></h1>
@@ -14,7 +20,7 @@
         
         </div>
         
-        <form class=" " action="/update-user/<%= user._id%>" method="post">
+        <form action="/update-user/<%= user._id%>" method="post">
             <h1 class="text-pink-500 my-5 font-bold text-2xl">Profile Settings</h1>
             <input class="p-3 rounded-lg border-2 border-violet-600" type="text" placeholder="Full Name" name="fullname" value="<%= user.fullname%>"><br><br>
             <input class="p-3 rounded-lg border-2 border-violet-600" type="text" placeholder="username" name="username" value="<%= user.username%>"><br><br>
@@ -32,5 +38,17 @@
         <a class="w-max p-2 bg-gradient-to-r from-purple-500 to-pink-700 text-transparent bg-clip-text text-xl font-bold absolute bottom-0 right-0" href="/logout-user">Logout</a>
     </div>
 </div>
+
+<script>
+    const inputimage = document.querySelector(".input-image");
+    const previewimage = document.querySelector(".preview-image")
+    const formimage = document.querySelector(".form-image")
+    previewimage.addEventListener("click", function () {
+      inputimage.click()
+    })
+    inputimage.addEventListener("change", function () {
+      formimage.submit()
+    })
+  </script>
 
 <%- include('partials/footer')%>

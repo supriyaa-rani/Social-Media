@@ -3,6 +3,10 @@ const mongoose = require('mongoose')
 const plm = require('passport-local-mongoose')
 
 const userSchema = new mongoose.Schema({
+    profilepic:{
+        type:String,
+        default:"https://static.vecteezy.com/system/resources/thumbnails/016/766/342/small_2x/happy-smiling-young-man-avatar-3d-portrait-of-a-man-cartoon-character-people-illustration-isolated-on-transparent-background-png.png"
+    },
     fullname: {
         type:String,
         trim:true,
